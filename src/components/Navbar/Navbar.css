@@ -6,14 +6,18 @@
     padding: 20px;
     display: flex;
     justify-content: space-between;
+    z-index: 1;
 }
 .logo{
     position: fixed;
     left: 20px;
     width: 80px;
+    object-fit: contain;
 }
 .avatar{
     position: fixed;
     right: 20px;
     width: 30px;
+    object-fit: contain;
+
 }

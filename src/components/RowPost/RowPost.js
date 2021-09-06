@@ -7,11 +7,13 @@ function RowPost({ title, islarge, url }) {
   const [Movies, setMovies] = useState([]);
   const [Trailerurl, setTrailerurl] = useState();
   useEffect(() => {
-    axios.get(url).then((res) => {
-      setMovies(res.data.results);
-      console.log(res.data.results[0]);
-    }); // eslint-disable-next-line
-  }, []);
+    async function fetchData() {
+      const request = await axios.get(url);
+      setMovies(request.data.results);
+      return request;
+    }
+    fetchData();
+  }, [url]);
   const handleUrl = (id) => {
     axios
       .get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`)
